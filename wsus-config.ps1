@@ -63,6 +63,14 @@ while ($subscription.GetSynchronizationProgress().ProcessedItems -ne $subscripti
     $subscription.GetSynchronizationProgress().ProcessedItems*100/($subscription.GetSynchronizationProgress().TotalItems)
     ) -Activity "WSUS Sync Progress"
 }
+
+#Enable reports
+#Install .NET 3.5 using the installation iso mounted in the virtual DVD drive (in this case)
+Install-WindowsFeature NET-Framework-Core -Source D:\sources\sxs
+#Install Microsoft report viewer redistributable 2008
+#Get it from: https://www.microsoft.com/en-us/download/confirmation.aspx?id=6576
+Start-Process -FilePath '.\ReportViewer 2008.exe' -ArgumentList '/q' -Wait
+
 # Configure Email Notifications
 $email = $wsus.GetEmailNotificationConfiguration()
 $ErrorActionPreference = 'Stop'
