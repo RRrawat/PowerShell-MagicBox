@@ -90,5 +90,14 @@ try {
 } catch {
     Write-Warning "$($error[0])"
 }
-			
+
+#Enable reports
+#Install .NET 3.5 using the installation iso mounted in the virtual DVD drive (in this case)
+Install-WindowsFeature NET-Framework-Core -Source D:\sources\sxs
+#Install Microsoft CLR Types for SQL Server 2012
+#Get it from: http://go.microsoft.com/fwlink/?LinkID=239644&clcid=0x409
+Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i C:\2012.msi','/qn','/norestart' -Wait
+#Install Microsoft report viewer redistributable 2012
+#Get it from: https://www.microsoft.com/en-us/download/confirmation.aspx?id=35747
+Start-Process -FilePath 'msiexec.exe' -ArgumentList '/i "C:\ReportViewer 2012.msi"','/qn','/norestart','ALLUSERS=2' -Wait
 			
