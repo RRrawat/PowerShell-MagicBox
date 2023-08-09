@@ -1,3 +1,6 @@
+####################3333
+# 1
+########################
 # Installs Chocolatey (needs admin rights)
 #Requires -RunAsAdministrator
 
@@ -9,3 +12,8 @@ try {
 	" Error in line $($_.InvocationInfo.ScriptLineNumber): $($Error[0])"
 	exit 1
 }
+
+
+####################3333
+# 1
+########################
